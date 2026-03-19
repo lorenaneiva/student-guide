@@ -1,24 +1,16 @@
 <template>
-  <div class="app">
-    <TheNavbar/>
-  </div>
+  <TheNavbar/>
+  <router-view/>
 </template>
 
 <script>
-import TheNavbar from './components/TheNavbar.vue';
+import TheNavbar from '@/components/TheNavbar.vue';
 
 
 export default {
-  name: 'App',
+  name: 'HomeView',
   components: {
     TheNavbar
   }
 }
 </script>
-
-<style>
-
-.app{
-  background-color: aquamarine;
-}
-</style>
