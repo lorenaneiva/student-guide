@@ -1,16 +1,24 @@
 <template>
   <TheNavbar/>
-  <router-view/>
+  <div class="view"><router-view/></div>
 </template>
 
 <script>
-import TheNavbar from '@/components/TheNavbar.vue';
+import TheNavbar from '@/components/layout/TheNavbar.vue';
 
 
 export default {
-  name: 'HomeView',
+  name: 'App',
   components: {
     TheNavbar
   }
 }
 </script>
+
+<style>
+
+.view {
+  width: 100%;
+}
+
+</style>
