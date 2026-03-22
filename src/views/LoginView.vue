@@ -74,31 +74,6 @@ export default {
     linear-gradient(135deg, #dfe8df 0%, #bcc8bc 40%, #8d9a8d 100%);
 }
 
-/* detalhes decorativos suaves */
-.login-page::before,
-.login-page::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.18);
-  filter: blur(10px);
-  z-index: 0;
-}
-
-.login-page::before {
-  width: 240px;
-  height: 240px;
-  top: 8%;
-  left: 10%;
-}
-
-.login-page::after {
-  width: 320px;
-  height: 320px;
-  bottom: -60px;
-  right: 8%;
-}
-
 .login-wrapper {
   width: 100%;
   display: flex;

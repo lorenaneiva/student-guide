@@ -21,7 +21,6 @@ export default {
 <style scoped>
 .btn {
   border: 0;
-
 }
 
 .link{
@@ -33,7 +32,7 @@ export default {
   text-decoration: none;
   transition: var(--transition-base);
   padding: var(--padding-md);
-  width: 120px;
+  width: auto;
 }
 .link:hover{
   color: var(--text-color-dark);

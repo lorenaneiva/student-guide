@@ -27,14 +27,15 @@ export default{
 
 <style scoped>
 .card{
-  background-color: white;
-  padding: var(--padding-lg);
-  gap: 1em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
+  width: 100%;
+  max-width: 460px;
+  padding: 34px 30px;
+  border-radius: var(--border-radius);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.35);
 }
 .title{
   margin: var(--margin-md);
