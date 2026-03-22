@@ -13,10 +13,18 @@
       :type="warning.type" 
       />
     </div> 
+    <div v-for="(activity, index) in activities" :key="index">
+      <BaseActivities :data="activity.dataEntrega">
+      <template v-slot:course>{{activity.curso}}</template>
+      <template v-slot:act>{{activity.atividade}}</template>
+      <template v-slot:details>{{activity.detalhes}}</template>
+      </BaseActivities>
+    </div> 
   </div>
 </template>
 
 <script>
+import BaseActivities from '@/components/common/BaseActivities.vue';
 import BaseAlert from '@/components/common/BaseAlert.vue';
 import BaseButtonNoLink from '@/components/common/BaseButtonNoLink.vue';
 
@@ -52,7 +60,36 @@ export default {
         }
       ],
       activities: [
-
+          {
+            curso: 'Lógica de Programação',
+            atividade: 'Lista de Exercícios 01',
+            detalhes: 'Resolver 10 questões sobre variáveis, operadores e estruturas condicionais.',
+            dataEntrega: '2026-03-25'
+          },
+          {
+            curso: 'Matemática Aplicada',
+            atividade: 'Trabalho sobre Matrizes',
+            detalhes: 'Montar um resumo com exemplos práticos de adição, multiplicação e determinantes.',
+            dataEntrega: '2026-03-27'
+          },
+          {
+            curso: 'Interação Humano-Computador',
+            atividade: 'Análise de Interface',
+            detalhes: 'Escolher um aplicativo e avaliar usabilidade, acessibilidade e experiência do usuário.',
+            dataEntrega: '2026-03-29'
+          },
+          {
+            curso: 'Sistemas Computacionais',
+            atividade: 'Pesquisa sobre Memória RAM',
+            detalhes: 'Explicar função, tipos e importância da memória RAM no desempenho do sistema.',
+            dataEntrega: '2026-03-30'
+          },
+          {
+            curso: 'Gestão de Times',
+            atividade: 'Estudo de Caso',
+            detalhes: 'Analisar um caso de liderança e propor melhorias na comunicação da equipe.',
+            dataEntrega: '2026-04-02'
+          }
       ],
       alert: false,
       selectedType: null
@@ -60,7 +97,8 @@ export default {
   },
   components: {
     BaseAlert,
-    BaseButtonNoLink
+    BaseButtonNoLink,
+    BaseActivities
   },
   computed: {
     filteredWarnings(){
@@ -72,22 +110,22 @@ export default {
   },
   methods: {
     onWar(){
-      if(this.alert){
-        this.alert = false
+      if(this.alert && this.selectedType == 'warning'){
+        return this.alert = false
       }
       this.alert = true
       this.selectedType = 'warning'
     },
     onAl(){
-      if(this.alert){
-        this.alert = false
+      if(this.alert && this.selectedType == 'alert'){
+        return this.alert = false
       }
       this.alert = true
       this.selectedType = 'alert'
     },
     onInf(){
-      if(this.alert){
-        this.alert = false
+      if(this.alert && this.selectedType == 'info'){
+        return this.alert = false
       }
       this.alert = true
       this.selectedType = 'info'

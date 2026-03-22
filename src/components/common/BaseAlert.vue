@@ -36,7 +36,10 @@ export default {
   border: 1px solid transparent;
   border-left: 6px solid transparent;
   color: #243b53;
+  text-wrap: wrap;
   display: flex;
+  justify-content: center;
+  width: 50vw;
 }
 
 .warning{

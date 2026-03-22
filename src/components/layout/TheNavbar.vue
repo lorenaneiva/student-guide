@@ -8,9 +8,18 @@
         <router-link :to="link.to" :class="classLinks(link)">{{ link.nome }}</router-link>
       </li>
     </ul>
-    <ul class="login">
-      <li v-for="(link, index) in loginLink" :key="index">
+    <ul class="login" v-if="$store.state.user == null">
+      <li  v-for="(link, index) in loginLink" :key="index" >
         <router-link :to="link.to" :class="classLinks(link)">{{ link.nome }}</router-link>
+      </li>
+    </ul>
+    
+    <ul class="login" v-if="$store.state.user != null">
+      <li :class="classLinks(loginLink[0])">
+        {{ fullName }}
+      </li>
+      <li>
+        <router-link :to="{ name: 'home' }" :class="classLinks(loginLink[1])" @click='onLogout'>logout</router-link>
       </li>
     </ul>
   </nav>
@@ -65,6 +74,17 @@ export default {
         link.typeLogin === 'login' ? 'login-link' : '',
         link.typeLogin === 'register' ? 'register-link' : '',
       ]
+    },
+    onLogout(){
+      this.$store.commit('setUser', null)
+    }
+  },
+  computed: {
+    fullName(){
+      if(this.$store.state.user == null ){
+        return 
+      }
+      return `${this.$store.state.user.first_name} ${this.$store.state.user.last_name}`
     }
   }
 }
@@ -86,6 +106,12 @@ ul{
 li{
   padding: 20px;
   margin: 10px;
+}
+.login{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
 }
 .link{
   display: inline-block;

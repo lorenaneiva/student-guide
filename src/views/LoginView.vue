@@ -10,14 +10,14 @@
           </p>
         </div>
 
-        <form class="login-form">
+        <form class="login-form"  @submit.prevent="changeUsers(id)">
           <div class="form-group">
             <label for="usuario">Usuário</label>
             <BaseInput
               type="text"
               name="usuario"
-              id="usuario"
               placeholder="Digite seu usuário"
+              @valueId="id = $event"
             />
           </div>
 
@@ -54,6 +54,24 @@ export default {
   name: 'LoginView',
   components: {
     BaseInput
+  },
+  data(){
+    return{
+      id : null
+    }
+  },
+  methods: {
+    changeUsers(num){
+      
+      const users = this.$store.state.users
+      const user = users.find(item => item.id == num)
+      if(!user){
+        return alert('Úsuario não encontrado')
+      }
+      
+      this.$store.commit('setUser', user)
+      this.$router.push('/');
+    }
   }
 }
 </script>
